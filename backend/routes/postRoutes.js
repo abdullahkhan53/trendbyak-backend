@@ -1,14 +1,14 @@
-import express from 'express';
-import upload from '../middlewares/upload.js'
+const express = require("express")
+const upload = require('../middlewares/upload.js');
 const router  = express.Router()
 
-import {
+const {
   getAllPosts,
   getPostBySlug,
   getPostsByCategory,
   createPost,
   deletePost
-} from '../controllers/postController.js';
+} = require('../controllers/postController.js');
 
 
 // Public routes
@@ -20,4 +20,4 @@ router.get('/:slug', getPostBySlug);
 router.post('/create', upload.single('image'), createPost);
 router.delete('/:id', deletePost);
 
-export default router;
+module.exports = router;

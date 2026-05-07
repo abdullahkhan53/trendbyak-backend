@@ -1,6 +1,5 @@
-
-import app from "./api/index.js";
-import {dbConnect} from "./utils/mongodb.js"
+const app = require("./api/index.js")
+const {dbConnect}  = require("./utils/mongodb.js");
 const PORT = process.env.PORT || 5000;
 
 
@@ -10,4 +9,3 @@ app.listen(PORT, () => {
   dbConnect()
 });
 
-export default app;

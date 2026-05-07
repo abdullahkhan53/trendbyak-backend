@@ -1,10 +1,10 @@
-import express from "express";
-import mongoose from "mongoose"
-import cors from "cors";
-import dotenv from "dotenv"
+const express = require("express")
+const mongoose = require("mongoose");
+const cors = require("cors")
+const dotenv = require("dotenv")
 // import {dbConnect} from "./utils/mongodb.js"
-import postRoute from "./routes/postRoutes.js" 
-const PORT = process.env.PORT || 5000;
+const postRoute = require("../routes/postRoutes")
+// const PORT = process.env.PORT || 5000;
 
 dotenv.config();
 
@@ -26,4 +26,4 @@ app.get('/', (req, res) => {
 
 
 
-export default app;
+module.exports = app;
