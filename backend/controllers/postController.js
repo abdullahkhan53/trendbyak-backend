@@ -1,8 +1,8 @@
-const slugify = require("slug")
-const Post = require("../models/posts.js");
+import slug from "slug";
+import Post from "../models/posts.js";
 
 // Get all posts
-exports.getAllPosts = async (req, res) => {
+export const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find().sort({ createdAt: -1 });
     res.json({ success: true, posts });
@@ -12,7 +12,7 @@ exports.getAllPosts = async (req, res) => {
 };
 
 // Get post by slug
-exports.getPostBySlug = async (req, res) => {
+export const getPostBySlug = async (req, res) => {
   try {
     const post = await Post.findOne({ slug: req.params.slug });
     if (!post) return res.status(404).json({ success: false, message: 'Post not found' });
@@ -23,7 +23,7 @@ exports.getPostBySlug = async (req, res) => {
 };
 
 // Get posts by category
-exports.getPostsByCategory = async (req, res) => {
+export const getPostsByCategory = async (req, res) => {
   try {
     const posts = await Post.find({ category: req.params.category }).sort({ createdAt: -1 });
     res.json({ success: true, posts });
@@ -33,7 +33,7 @@ exports.getPostsByCategory = async (req, res) => {
 };
 
 // Create post
-exports.createPost = async (req, res) => {
+export const createPost = async (req, res) => {
   try {
     const { title, description, content, amazonLink, category } = req.body;
     
@@ -70,7 +70,7 @@ exports.createPost = async (req, res) => {
 };
 
 // Delete post
-exports.deletePost = async (req, res) => {
+export const deletePost = async (req, res) => {
   try {
     await Post.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: 'Post deleted!' });
